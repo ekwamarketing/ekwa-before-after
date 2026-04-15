@@ -3,7 +3,7 @@
  * Plugin Name: EKWA Before After Gallery
  * Plugin URI: https://ekwa.com
  * Description: A beautiful before and after gallery with stacked card design for dental and medical practices.
- * Version: 1.2.0
+ * Version: 1.2.1
  * Author: EKWA
  * Author URI: https://ekwa.com
  * License: GPL v2 or later
