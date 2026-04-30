@@ -40,7 +40,7 @@ $wrapper_class = 'ekwa-bag-carousel-wrapper' . ($custom_tpl_enabled ? ' ekwa-bag
 
     <div class="ekwa-bag-carousel-container<?php echo !$show_arrows ? ' no-arrows' : ''; ?>">
         <?php if ($show_arrows) : ?>
-        <button class="ekwa-bag-carousel-arrow prev"><i class="fas fa-chevron-left"></i></button>
+        <button class="ekwa-bag-carousel-arrow prev" aria-label="<?php esc_attr_e('Previous slide', 'ekwa-before-after-gallery'); ?>"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
         <?php endif; ?>
 
         <div class="ekwa-bag-carousel-viewport">
@@ -50,7 +50,7 @@ $wrapper_class = 'ekwa-bag-carousel-wrapper' . ($custom_tpl_enabled ? ' ekwa-bag
         </div>
 
         <?php if ($show_arrows) : ?>
-        <button class="ekwa-bag-carousel-arrow next"><i class="fas fa-chevron-right"></i></button>
+        <button class="ekwa-bag-carousel-arrow next" aria-label="<?php esc_attr_e('Next slide', 'ekwa-before-after-gallery'); ?>"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
         <?php endif; ?>
     </div>
 
@@ -69,7 +69,7 @@ $wrapper_class = 'ekwa-bag-carousel-wrapper' . ($custom_tpl_enabled ? ' ekwa-bag
                     <div class="ekwa-bag-carousel-modal-breadcrumb"><?php esc_html_e('Category', 'ekwa-before-after-gallery'); ?></div>
                     <h2 class="ekwa-bag-carousel-modal-title"><?php esc_html_e('Treatment Title', 'ekwa-before-after-gallery'); ?></h2>
                 </div>
-                <button class="ekwa-bag-carousel-modal-close"><i class="fas fa-times"></i></button>
+                <button class="ekwa-bag-carousel-modal-close" aria-label="<?php esc_attr_e('Close', 'ekwa-before-after-gallery'); ?>"><i class="fas fa-times" aria-hidden="true"></i></button>
             </div>
             <div class="ekwa-bag-carousel-modal-body">
                 <div class="ekwa-bag-carousel-modal-images">
