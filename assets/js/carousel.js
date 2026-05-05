@@ -268,12 +268,15 @@
             var afterUrl = set.after || '';
 
             if (isCombined) {
-                combinedImgTag = '<img src="' + this.escAttr(beforeUrl) + '" alt="' + this.escAttr(set.beforeAlt || 'Before & After') + '">';
+                var bwh = (set.beforeWidth && set.beforeHeight) ? ' width="' + parseInt(set.beforeWidth) + '" height="' + parseInt(set.beforeHeight) + '"' : '';
+                combinedImgTag = '<img src="' + this.escAttr(beforeUrl) + '" alt="' + this.escAttr(set.beforeAlt || 'Before & After') + '"' + bwh + '>';
                 beforeImgTag = combinedImgTag;
                 afterImgTag = '';
             } else {
-                beforeImgTag = '<img src="' + this.escAttr(beforeUrl) + '" alt="' + this.escAttr(set.beforeAlt || 'Before') + '">';
-                afterImgTag = '<img src="' + this.escAttr(afterUrl) + '" alt="' + this.escAttr(set.afterAlt || 'After') + '">';
+                var bwh2 = (set.beforeWidth && set.beforeHeight) ? ' width="' + parseInt(set.beforeWidth) + '" height="' + parseInt(set.beforeHeight) + '"' : '';
+                var awh = (set.afterWidth && set.afterHeight) ? ' width="' + parseInt(set.afterWidth) + '" height="' + parseInt(set.afterHeight) + '"' : '';
+                beforeImgTag = '<img src="' + this.escAttr(beforeUrl) + '" alt="' + this.escAttr(set.beforeAlt || 'Before') + '"' + bwh2 + '>';
+                afterImgTag = '<img src="' + this.escAttr(afterUrl) + '" alt="' + this.escAttr(set.afterAlt || 'After') + '"' + awh + '>';
                 combinedImgTag = beforeImgTag;
             }
 
@@ -321,25 +324,28 @@
             if (isCombined) {
                 var beforeLabel = self.showLabels ? '<span class="ekwa-bag-carousel-slide-label left">Before</span>' : '';
                 var afterLabel = self.showLabels ? '<span class="ekwa-bag-carousel-slide-label right">After</span>' : '';
+                var bWH = (set.beforeWidth && set.beforeHeight) ? ' width="' + parseInt(set.beforeWidth) + '" height="' + parseInt(set.beforeHeight) + '"' : '';
                 slideImagesHtml = 
                     '<div class="ekwa-bag-carousel-slide-images ekwa-bag-carousel-combined">' +
                         '<div class="ekwa-bag-carousel-slide-img combined">' +
-                            '<img src="' + set.before + '" alt="' + (set.beforeAlt || 'Before & After') + '">' +
+                            '<img src="' + set.before + '" alt="' + (set.beforeAlt || 'Before & After') + '"' + bWH + '>' +
                             beforeLabel + afterLabel +
                         '</div>' +
                     '</div>';
             } else {
                 var bLabel = self.showLabels ? '<span class="ekwa-bag-carousel-slide-label">Before</span>' : '';
                 var aLabel = self.showLabels ? '<span class="ekwa-bag-carousel-slide-label">After</span>' : '';
+                var bWH2 = (set.beforeWidth && set.beforeHeight) ? ' width="' + parseInt(set.beforeWidth) + '" height="' + parseInt(set.beforeHeight) + '"' : '';
+                var aWH = (set.afterWidth && set.afterHeight) ? ' width="' + parseInt(set.afterWidth) + '" height="' + parseInt(set.afterHeight) + '"' : '';
                 slideImagesHtml = 
                     '<div class="ekwa-bag-carousel-slide-images">' +
                         '<div class="ekwa-bag-carousel-slide-img">' +
-                            '<img src="' + set.before + '" alt="' + (set.beforeAlt || 'Before') + '">' +
+                            '<img src="' + set.before + '" alt="' + (set.beforeAlt || 'Before') + '"' + bWH2 + '>' +
                             bLabel +
                         '</div>' +
                         '<div class="ekwa-bag-carousel-separator"></div>' +
                         '<div class="ekwa-bag-carousel-slide-img after">' +
-                            '<img src="' + set.after + '" alt="' + (set.afterAlt || 'After') + '">' +
+                            '<img src="' + set.after + '" alt="' + (set.afterAlt || 'After') + '"' + aWH + '>' +
                             aLabel +
                         '</div>' +
                     '</div>';
@@ -660,13 +666,16 @@
                 c.sets.forEach(function(s, i) {
                     var thumbCombined = s.isCombined || false;
                     if (thumbCombined) {
+                        var tbWH = (s.beforeWidth && s.beforeHeight) ? ' width="' + parseInt(s.beforeWidth) + '" height="' + parseInt(s.beforeHeight) + '"' : '';
                         thumbsHtml += '<div class="ekwa-bag-carousel-modal-thumb ekwa-bag-carousel-modal-combined-thumb' + (i === self.currentViewIdx ? ' active' : '') + '" data-idx="' + i + '">' +
-                            '<img src="' + s.before + '" alt="' + (s.beforeAlt || 'View') + '">' +
+                            '<img src="' + s.before + '" alt="' + (s.beforeAlt || 'View') + '"' + tbWH + '>' +
                             '</div>';
                     } else {
+                        var tbBWH = (s.beforeWidth && s.beforeHeight) ? ' width="' + parseInt(s.beforeWidth) + '" height="' + parseInt(s.beforeHeight) + '"' : '';
+                        var tbAWH = (s.afterWidth && s.afterHeight) ? ' width="' + parseInt(s.afterWidth) + '" height="' + parseInt(s.afterHeight) + '"' : '';
                         thumbsHtml += '<div class="ekwa-bag-carousel-modal-thumb' + (i === self.currentViewIdx ? ' active' : '') + '" data-idx="' + i + '">' +
-                            '<img src="' + s.before + '" alt="' + (s.beforeAlt || 'Before') + '">' +
-                            '<img src="' + s.after + '" alt="' + (s.afterAlt || 'After') + '">' +
+                            '<img src="' + s.before + '" alt="' + (s.beforeAlt || 'Before') + '"' + tbBWH + '>' +
+                            '<img src="' + s.after + '" alt="' + (s.afterAlt || 'After') + '"' + tbAWH + '>' +
                             '</div>';
                     }
                 });
